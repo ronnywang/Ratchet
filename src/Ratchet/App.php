@@ -82,14 +82,6 @@ class App {
         $policy = new FlashPolicy;
         $policy->addAllowedAccess($httpHost, 80);
         $policy->addAllowedAccess($httpHost, $port);
-
-        if (80 == $port) {
-            $flashUri = '0.0.0.0:843';
-        } else {
-            $flashUri = 8843;
-        }
-        $flashSock = new Reactor($flashUri, $loop);
-        $this->flashServer = new IoServer($policy, $flashSock);
     }
 
     /**
